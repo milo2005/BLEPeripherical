@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Temperatura</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="state_advertise">Anunciando</string>
+    <string name="state_no_advertise">No Anunciando</string>
+    <string name="state_connected">Connected</string>
+</resources>
