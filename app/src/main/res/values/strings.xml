@@ -6,4 +6,5 @@
     <string name="state_advertise">Anunciando</string>
     <string name="state_no_advertise">No Anunciando</string>
     <string name="state_connected">Connected</string>
+    <string name="advertise_fail">Error al Anunciar Servicio</string>
 </resources>

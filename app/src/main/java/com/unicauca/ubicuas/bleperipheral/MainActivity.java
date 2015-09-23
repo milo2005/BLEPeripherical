@@ -2,12 +2,15 @@ package com.unicauca.ubicuas.bleperipheral;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.ParcelUuid;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+
+    static final ParcelUuid Service_UUID = ParcelUuid.fromString("0000b81d-0000-1000-8000-00805f9b34fb");
 
     TextView txtTemp, txtState;
     SeekBar temp;
