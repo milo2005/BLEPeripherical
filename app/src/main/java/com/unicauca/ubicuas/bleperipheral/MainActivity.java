@@ -8,9 +8,13 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-    static final ParcelUuid Service_UUID = ParcelUuid.fromString("0000b81d-0000-1000-8000-00805f9b34fb");
+    static final ParcelUuid SERVICE_UUID = ParcelUuid.fromString("0000b81d-0000-1000-8000-00805f9b34fb");
+    static final UUID DESCRIPTOR_UUID = UUID.fromString("0000b82d-0000-1000-8000-00805f9b34fb");
+    static final UUID CHARACTERISTIC_UUID = UUID.fromString("0000b83d-0000-1000-8000-00805f9b34fb");
 
     TextView txtTemp, txtState;
     SeekBar temp;
