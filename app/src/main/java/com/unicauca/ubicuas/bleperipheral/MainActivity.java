@@ -3,6 +3,7 @@ package com.unicauca.ubicuas.bleperipheral;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.AdvertiseCallback;
 import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     BluetoothManager manager;
     BluetoothAdapter adapter;
     BluetoothLeAdvertiser advertiser;
+    MyAdvertiseCallback callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +79,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     @Override
     public void onClick(View v) {
         if(state.isChecked()) {
-
+            startAdvertasing();
         }else {
-
+            stopAdvertasing();
         }
     }
     //endregion1
@@ -116,10 +118,27 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 .addServiceData(SERVICE_UUID, temperature.getBytes())
                 .build();
 
-        advertiser.startAdvertising();
+        callback = new MyAdvertiseCallback();
+
+        advertiser.startAdvertising(settings,data,callback);
     }
 
     public void stopAdvertasing(){
+        if(callback!=null) {
+            advertiser.stopAdvertising(callback);
+            callback = null;
+        }
+    }
 
+    public class MyAdvertiseCallback extends AdvertiseCallback{
+        @Override
+        public void onStartSuccess(AdvertiseSettings settingsInEffect) {
+            super.onStartSuccess(settingsInEffect);
+        }
+
+        @Override
+        public void onStartFailure(int errorCode) {
+            super.onStartFailure(errorCode);
+        }
     }
 }
